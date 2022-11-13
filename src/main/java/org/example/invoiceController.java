@@ -1,9 +1,9 @@
 package org.example;
+
+import java.util.ArrayList;
 import org.example.model.companyModel;
 import org.example.model.elementModel;
 import org.example.model.systemUserModel;
-
-import java.util.ArrayList;
 
 public class invoiceController {
   private final view view;
@@ -21,6 +21,7 @@ public class invoiceController {
   public void addBuyer(String name, int nip, String address) {
     invoiceService.addBuyerAsCompany(name, nip, address);
   }
+  
   public void addBuyer(String firstName, String secondName, String address) {
     invoiceService.addBuyerAsPerson(firstName, secondName, address);
   }
@@ -63,6 +64,7 @@ public class invoiceController {
   public void save() {
     invoiceService.saveInvoice();
   }
+  
   public void startProgram() {
     view.start();
   }

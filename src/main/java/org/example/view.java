@@ -10,6 +10,7 @@ public class view {
   public view(invoiceController controller) {
     this.controller = controller;
   }
+  
   public ArrayList<String> insertCompanyData(Scanner scanner) {
     System.out.println("Wprowadz nazwe firmy: ");
     String name = scanner.nextLine();
@@ -19,6 +20,7 @@ public class view {
     String address = scanner.nextLine();
     return new ArrayList<>(Arrays.asList(name, Integer.toString(nip), address));
   }
+  
   public void insertPersonData(Scanner scanner) {
     System.out.println("Wprowadz imie nabywcy: ");
     String name = scanner.nextLine();
@@ -28,27 +30,28 @@ public class view {
     String address = scanner.nextLine();
     controller.addBuyer(name, lastName, address);
   }
+  
   public void insertElementData(Scanner scanner) {
     System.out.println("Wprowadz nazwe produktu: ");
     String name = scanner.nextLine();
     
     System.out.println("Wprowadz cene netto: ");
     double price = Double.parseDouble(scanner.nextLine());
-    while(price <= 0) {
+    while (price <= 0) {
       System.out.println("Bledna cena. Wprowadz poprawna cene: ");
       price = Double.parseDouble(scanner.nextLine());
     }
     
     System.out.println("Wprowadz ilosc: ");
     int quantity = Integer.parseInt(scanner.nextLine());
-    while(quantity <= 0) {
+    while (quantity <= 0) {
       System.out.println("Bledna ilosc. Wprowadz poprawna ilosc: ");
       quantity = Integer.parseInt(scanner.nextLine());
     }
     
     System.out.println("Wprowadz stawke VAT(np.: 0.23): ");
     double vat = Double.parseDouble(scanner.nextLine());
-    while(vat < 0 | vat > 1) {
+    while (vat < 0 | vat > 1) {
       System.out.println("Bledna stawka. Wprowadz poprawna stawke VAT: ");
       vat = Double.parseDouble(scanner.nextLine());
     }
@@ -64,8 +67,9 @@ public class view {
     System.out.println(controller.getBuyer().toString());
     
     System.out.println("Pozycje faktury:");
-    System.out.println("LP | Nazwa towaru/uslugi | Cena netto | VAT | Ilosc | Wartosc Netto | Wartosc VAT | Wartosc brutto");
-    for(int i = 0; i < controller.getAllElements().size(); i++) {
+    System.out.println("LP | Nazwa towaru/uslugi | Cena netto | VAT | Ilosc "
+            + "| Wartosc Netto | Wartosc VAT | Wartosc brutto");
+    for (int i = 0; i < controller.getAllElements().size(); i++) {
       System.out.println((i + 1) + " | " + controller.getElementAsString(i));
     }
   }
@@ -82,12 +86,12 @@ public class view {
     System.out.println("Typ nabywcy osoba prywatna lub firma\nWprowadz typ: ");
     String type = scanner.nextLine();
     
-    while(!(type.contentEquals("firma") | type.contentEquals("osoba prywatna"))) {
+    while (!(type.contentEquals("firma") | type.contentEquals("osoba prywatna"))) {
       System.out.println("Nieznany typ\nWprowadz poprawny typ: ");
       type = scanner.nextLine();
     }
     
-    if(type.contentEquals("firma")) {
+    if (type.contentEquals("firma")) {
       ArrayList<String> issuerData = insertCompanyData(scanner);
       controller.addBuyer(issuerData.get(0), Integer.parseInt(issuerData.get(1)), issuerData.get(2));
     }
