@@ -56,34 +56,17 @@ public class view {
   }
   
   public void display() {
-    System.out.println("Sprzedawca: ");
     System.out.println(controller.getNumber() + "/" + controller.getDate());
-    System.out.println(controller.getIssuer().getCompanyName() + "\n"
-            + controller.getIssuer().getNip() + "\n"
-            + controller.getIssuer().getAddress());
+    System.out.println("Sprzedawca: ");
+    System.out.println(controller.getIssuer().toString());
     
     System.out.println("Nabywca: ");
-    System.out.println(controller.getBuyer().getParams().get(0));
-    System.out.println(controller.getBuyer().getParams().get(1));
-    System.out.println(controller.getBuyer().getAddress());
+    System.out.println(controller.getBuyer().toString());
     
     System.out.println("Pozycje faktury:");
-    System.out.println("LP | Nazwa towaru/uslugi | Ilosc | Cena netto | Wartosc netto | VAT | Wartosc VAT | Wartosc brutto");
-    for(int i = 0; i < controller.getElementList().size(); i++) {
-      double nettoValue = controller.getElementList().get(i).getItemModel().getNettoPrice()
-                          * controller.getElementList().get(i).getQuantity();
-      double vatValue = controller.getElementList().get(i).getItemModel().getVat()
-                        * controller.getElementList().get(i).getItemModel().getNettoPrice()
-                        * controller.getElementList().get(i).getQuantity();
-      System.out.println(
-              i + 1 + " | "
-              + controller.getElementList().get(i).getItemModel().getName() + " | "
-              + controller.getElementList().get(i).getQuantity() + " | "
-              + controller.getElementList().get(i).getItemModel().getNettoPrice() + " | "
-              + nettoValue + " | "
-              + controller.getElementList().get(i).getItemModel().getVat() + " | "
-              + vatValue + " | "
-              + (nettoValue + vatValue));
+    System.out.println("LP | Nazwa towaru/uslugi | Cena netto | VAT | Ilosc | Wartosc Netto | Wartosc VAT | Wartosc brutto");
+    for(int i = 0; i < controller.getAllElements().size(); i++) {
+      System.out.println((i + 1) + " | " + controller.getElementAsString(i));
     }
   }
   
@@ -130,6 +113,10 @@ public class view {
       }
       else if (currentOperation.contentEquals("wyswietl")) {
         display();
+      }
+      else if( currentOperation.contentEquals("zapisz do bazy danych")) {
+        controller.save();
+        System.out.println("Zapisano pomyslnie");
       }
       else if (currentOperation.contentEquals("wyjdz")) {
         break;

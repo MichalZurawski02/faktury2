@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class invoiceModel {
   private final int number;
   private final String date;
-  private ArrayList<elementModel> elementList;
+  private final ArrayList<elementModel> elementList;
   private companyModel issuer;
   private systemUserModel buyer;
   
@@ -26,6 +26,7 @@ public class invoiceModel {
   public ArrayList<elementModel> getElementList() {
     return elementList;
   }
+  
   
   public companyModel getIssuer() {
     return issuer;
@@ -58,14 +59,5 @@ public class invoiceModel {
     else {
       element.setQuantity(element.getQuantity() + quantity);
     }
-  }
-  
-  public double calculateTotalPrice() {
-    return elementList.stream().mapToDouble(elementModel -> elementModel.getItemModel().getNettoPrice() * elementModel.getQuantity()).sum();
-  }
-  public double calculateTotalVat() {
-    return elementList.stream().mapToDouble(elementModel -> elementModel.getItemModel().getNettoPrice()
-            * elementModel.getItemModel().getVat()
-            * elementModel.getQuantity()).sum();
   }
 }

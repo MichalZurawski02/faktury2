@@ -1,8 +1,5 @@
 package org.example.model;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class personModel extends systemUserModel {
   private final String firstName;
   private final String lastName;
@@ -13,7 +10,7 @@ public class personModel extends systemUserModel {
     this.lastName = lastName;
   }
   @Override
-  public ArrayList<String> getParams() {
-    return new ArrayList<>(Arrays.asList(firstName, lastName));
+  public String toString() {
+    return firstName + "\n" + lastName + "\n" + super.toString();
   }
 }

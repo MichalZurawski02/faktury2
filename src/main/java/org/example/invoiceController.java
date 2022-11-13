@@ -1,59 +1,70 @@
 package org.example;
 import org.example.model.companyModel;
 import org.example.model.elementModel;
-import org.example.model.invoiceModel;
 import org.example.model.systemUserModel;
 
 import java.util.ArrayList;
 
 public class invoiceController {
-  private invoiceModel invoice;
   private final view view;
+  private final invoiceService invoiceService;
   
   public invoiceController() {
     view = new view(this);
+    invoiceService = new invoiceService();
   }
   
   public void createInvoice(int number, String date) {
-    invoice = new invoiceModel(number, date);
+    invoiceService.createInvoice(number, date);
   }
   
   public void addBuyer(String name, int nip, String address) {
-    invoice.addBuyer(name, nip, address);
+    invoiceService.addBuyerAsCompany(name, nip, address);
   }
   public void addBuyer(String firstName, String secondName, String address) {
-    invoice.addBuyer(firstName, secondName, address);
+    invoiceService.addBuyerAsPerson(firstName, secondName, address);
   }
   
   public void addIssuer(String companyName, int nip, String address) {
-    invoice.addIssuer(companyName, nip, address);
+    invoiceService.addIssuer(companyName, nip, address);
   }
   
   public void addElement(double nettoPrice, double vat, String name, int quantity) {
-    invoice.addElement(nettoPrice, vat, name, quantity);
+    invoiceService.addElement(nettoPrice, vat, name, quantity);
   }
   
   public systemUserModel getBuyer() {
-    return invoice.getBuyer();
+    return invoiceService.getBuyer();
   }
   
   public companyModel getIssuer() {
-    return invoice.getIssuer();
+    return invoiceService.getIssuer();
   }
   
-  public ArrayList<elementModel> getElementList() {
-    return invoice.getElementList();
+  public ArrayList<elementModel> getAllElements() {
+    return invoiceService.getAll();
   }
   
   public String getDate() {
-    return invoice.getDate();
+    return invoiceService.getDate();
   }
   
   public int getNumber() {
-    return invoice.getNumber();
+    return invoiceService.getNumber();
   }
   
+  public String getElementAsString(int i) {
+    return invoiceService.getElement(i).toString() + " | "
+            + invoiceService.calculateTotalNettoPrice() + " | "
+            + invoiceService.calculateTotalVat() + " | "
+            + invoiceService.calculateTotalPrice();
+  }
+  
+  public void save() {
+    invoiceService.saveInvoice();
+  }
   public void startProgram() {
     view.start();
   }
+  
 }

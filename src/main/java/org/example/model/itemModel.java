@@ -24,4 +24,8 @@ public class itemModel {
     return name;
   }
   
+  @Override
+  public String toString() {
+    return name + " | " + nettoPrice + " | " + vat;
+  }
 }

@@ -25,4 +25,8 @@ public class elementModel {
     this.item = new itemModel(nettoPrice, vat, name);
   }
   
+  @Override
+  public String toString() {
+    return item.toString() + " | " + quantity;
+  }
 }
