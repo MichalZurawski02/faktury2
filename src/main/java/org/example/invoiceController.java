@@ -1,17 +1,21 @@
 package org.example;
 
 import java.util.ArrayList;
+
 import org.example.model.companyModel;
 import org.example.model.elementModel;
 import org.example.model.systemUserModel;
 
+// kontroler - jest posrednikiem w komunikacji widoku z logika i danymi,
+// wywoluje tylko odpowiednie metody tak, zeby odpowiednie warstwy byly wyabstrahowane
+// jej jedynym zadaniem jest bycie lacznikiem
 public class invoiceController {
   private final view view;
   private final invoiceService invoiceService;
   
   public invoiceController() {
     view = new view(this);
-    invoiceService = new invoiceService();
+    invoiceService = new invoiceService(null); //add repository which saves invoice
   }
   
   public void createInvoice(int number, String date) {

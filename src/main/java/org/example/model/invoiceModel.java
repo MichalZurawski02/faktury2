@@ -2,6 +2,7 @@ package org.example.model;
 
 import java.util.ArrayList;
 
+//model - reprezentuje obiekt faktury, posiada gettery, nie ma zadnej logiki
 public class invoiceModel {
   private final int number;
   private final String date;

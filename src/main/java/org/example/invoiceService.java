@@ -7,9 +7,15 @@ import org.example.model.systemUserModel;
 
 import java.util.ArrayList;
 
+//serwis - odpowiada za logike dla wyliczania podatkow i cen w fakturze
+//ma bezposredni dostep do modelu i bzay danych
 public class invoiceService {
-  private invoiceRepository invoiceRepository;
+  private final invoiceRepository invoiceRepository;
   private invoiceModel invoice;
+
+  public invoiceService(invoiceRepository invoiceRepository) {
+    this.invoiceRepository = invoiceRepository;
+  }
   
   public double calculateTotalPrice() {
     return calculateTotalNettoPrice() + calculateTotalVat();

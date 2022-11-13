@@ -1,5 +1,6 @@
 package org.example.model;
 
+//model - reprezentuje specyficznego uzytkownika
 public class companyModel extends systemUserModel {
   private final String companyName;
   private final int nip;

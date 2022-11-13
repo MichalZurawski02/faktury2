@@ -1,5 +1,6 @@
 package org.example.model;
 
+//model - reprezentuje obiekt i jego ilosc, posiada gettery, nie ma zadnej logiki
 public class elementModel {
   private itemModel item;
   private int quantity;

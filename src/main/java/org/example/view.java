@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+//widok - odpowiada za wyswietlanie danych na konsoli
+//jest zwiazana jedynie z kontrolerem
 public class view {
   private final invoiceController controller;
   
@@ -109,6 +111,7 @@ public class view {
       System.out.println(
               "dodaj - dodaje element do faktury\n"
                       + "wyswietl - wyswietla cala fakture\n"
+                      + "zapisz - zapisz do bazy danych"
                       + "wyjdz - wychodzi z programu\n");
       System.out.println("Wprowadz nazwe operacji: ");
       currentOperation = scanner.nextLine();
