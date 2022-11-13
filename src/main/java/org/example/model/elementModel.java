@@ -13,10 +13,6 @@ public class elementModel {
     return item;
   }
   
-  public void setItemModel(itemModel item) {
-    this.item = item;
-  }
-  
   public int getQuantity() {
     return quantity;
   }

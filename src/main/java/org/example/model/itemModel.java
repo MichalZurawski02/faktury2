@@ -1,10 +1,10 @@
 package org.example.model;
 
 public class itemModel {
-  private double nettoPrice;
+  private final double nettoPrice;
   
-  private double vat;
-  private String name;
+  private final double vat;
+  private final String name;
   
   public itemModel(double nettoPrice, double vat, String name) {
     this.nettoPrice = nettoPrice;

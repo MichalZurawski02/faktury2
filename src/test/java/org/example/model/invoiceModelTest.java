@@ -1,13 +1,12 @@
 package org.example.model;
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class invoiceModelTest {
-  private static invoiceModel invoice = new invoiceModel(1, "01.01.01");
+  private final static invoiceModel invoice = new invoiceModel(1, "01.01.01");
   @BeforeAll
   static void init() {
     invoice.addElement(12, 0.23, "gazeta", 2);
